@@ -1,0 +1,85 @@
+{
+ "spark": {
+  "result": [
+   {
+    "symbol": "AAPL",
+    "response": [
+     {
+      "meta": {
+       "currency": "USD",
+       "symbol": "AAPL",
+       "exchangeName": "NMS",
+       "instrumentType": "EQUITY",
+       "regularMarketTime": 1794411054,
+       "gmtoffset": -18000,
+       "timezone": "EST",
+       "exchangeTimezoneName": "America/New_York",
+       "regularMarketPrice": 353.61,
+       "dataGranularity": "1d"
+      },
+      "timestamp": [
+       1793889000,
+       1793975400,
+       1794234600,
+       1794321000,
+       1794407400
+      ],
+      "indicators": {
+       "quote": [
+        {
+         "close": [
+          344.17,
+          342.37,
+          350.69,
+          348.51,
+          353.61
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   },
+   {
+    "symbol": "M&M.NS",
+    "response": [
+     {
+      "meta": {
+       "currency": "INR",
+       "symbol": "M&M.NS",
+       "exchangeName": "NSI",
+       "instrumentType": "EQUITY",
+       "regularMarketTime": 1794391194,
+       "gmtoffset": 19800,
+       "timezone": "IST",
+       "exchangeTimezoneName": "Asia/Kolkata",
+       "regularMarketPrice": 3465.0,
+       "dataGranularity": "1d"
+      },
+      "timestamp": [
+       1793763900,
+       1793850300,
+       1793936700,
+       1794195900,
+       1794368700
+      ],
+      "indicators": {
+       "quote": [
+        {
+         "close": [
+          2961.9,
+          3127.5,
+          3287.2,
+          3290.6,
+          3465.0
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  ],
+  "error": null
+ }
+}

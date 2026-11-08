@@ -1,0 +1,84 @@
+{
+ "chart": {
+  "result": [
+   {
+    "meta": {
+     "currency": "INR",
+     "symbol": "TEST.NS",
+     "gmtoffset": 19800,
+     "regularMarketPrice": 101.5,
+     "regularMarketTime": 1772702300
+    },
+    "timestamp": [
+     1772423100,
+     1772509500,
+     1772595900,
+     1772682300
+    ],
+    "events": {
+     "splits": {
+      "1": {
+       "date": 1772595900,
+       "numerator": 10,
+       "denominator": 1,
+       "splitRatio": "10:1"
+      }
+     },
+     "dividends": {
+      "2": {
+       "amount": 0.5,
+       "date": 1772423100
+      }
+     }
+    },
+    "indicators": {
+     "quote": [
+      {
+       "open": [
+        99,
+        100,
+        98,
+        100
+       ],
+       "high": [
+        101,
+        102,
+        100,
+        102
+       ],
+       "low": [
+        98,
+        99,
+        97,
+        99
+       ],
+       "close": [
+        100,
+        101,
+        99,
+        101.5
+       ],
+       "volume": [
+        10000,
+        20000,
+        300000,
+        400000
+       ]
+      }
+     ],
+     "adjclose": [
+      {
+       "adjclose": [
+        99.5,
+        100.5,
+        99,
+        101.5
+       ]
+      }
+     ]
+    }
+   }
+  ],
+  "error": null
+ }
+}
