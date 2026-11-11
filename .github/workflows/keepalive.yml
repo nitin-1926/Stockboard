@@ -1,0 +1,25 @@
+name: Keepalive
+
+# GitHub disables scheduled workflows after 60 days without repo activity. Re-enabling them
+# monthly via the API (`gh workflow enable`) resets that; it needs only the built-in
+# GITHUB_TOKEN with actions:write, no PAT. Enabling an already-enabled workflow is a no-op.
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  enable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Re-enable cron workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          for wf in cron-kite-login.yml cron-kite-sync.yml cron-indmoney-sync.yml cron-prices.yml cron-eod.yml keepalive.yml; do
+            gh workflow enable "$wf"
+          done

@@ -1,0 +1,32 @@
+name: Backfill
+
+# Manual only. Each POST does one chunk (< 300 s) and persists its cursor in sync_runs;
+# loop until the job reports done=true.
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: cron-backfill
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: POST /api/cron/backfill until done
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          for i in $(seq 1 200); do
+            body=$(curl -fsS --max-time 320 -X POST "$APP_URL/api/cron/backfill" -H "Authorization: Bearer $CRON_SECRET")
+            echo "[$i] $body"
+            if [ "$(echo "$body" | jq -r '.done')" = "true" ]; then exit 0; fi
+            if [ "$(echo "$body" | jq -r '.status')" = "skipped" ]; then echo "another backfill run is in flight"; fi
+            sleep 2
+          done
+          echo "backfill not done after 200 chunks" >&2
+          exit 1
