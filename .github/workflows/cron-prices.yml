@@ -1,0 +1,27 @@
+name: Cron prices-intraday
+
+on:
+  # UTC. Wide enough for IST and both NY offsets (EST 14:30-21:00, EDT 13:30-20:00);
+  # the job skips whichever market isMarketOpen() says is closed.
+  schedule:
+    - cron: "*/15 3-10 * * 1-5"
+    - cron: "*/15 13-21 * * 1-5"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: cron-prices-intraday
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: POST /api/cron/prices-intraday
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl -fsS --max-time 320 -X POST "$APP_URL/api/cron/prices-intraday" -H "Authorization: Bearer $CRON_SECRET"

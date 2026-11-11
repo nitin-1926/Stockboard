@@ -1,0 +1,32 @@
+name: Cron eod
+
+on:
+  schedule:
+    - cron: "0 11 * * 1-5" # eod-in (16:30 IST)
+    - cron: "30 21 * * 1-5" # eod-us (after the 16:00 NY close in both EST and EDT)
+  workflow_dispatch:
+    inputs:
+      job:
+        type: choice
+        options: [eod-in, eod-us]
+        default: eod-in
+
+permissions: {}
+
+concurrency:
+  group: cron-${{ inputs.job || (github.event.schedule == '0 11 * * 1-5' && 'eod-in' || 'eod-us') }}
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      JOB: ${{ inputs.job || (github.event.schedule == '0 11 * * 1-5' && 'eod-in' || 'eod-us') }}
+    steps:
+      - name: POST /api/cron/${{ env.JOB }}
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl -fsS --max-time 320 -X POST "$APP_URL/api/cron/$JOB" -H "Authorization: Bearer $CRON_SECRET"
