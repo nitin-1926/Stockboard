@@ -1,0 +1,25 @@
+name: Cron kite-sync
+
+on:
+  schedule:
+    - cron: "15 10 * * 1-5"
+    - cron: "30 11 * * 1-5"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: cron-kite-sync
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: POST /api/cron/kite-sync
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          curl -fsS --max-time 320 -X POST "$APP_URL/api/cron/kite-sync" -H "Authorization: Bearer $CRON_SECRET"
