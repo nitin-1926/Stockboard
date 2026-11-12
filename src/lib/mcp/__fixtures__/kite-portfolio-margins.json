@@ -1,0 +1,74 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    },
+    "trade.kite/app": {
+      "arguments": {
+        "mode": "margins"
+      },
+      "tool": "portfolio"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"equity\":{\"enabled\":true,\"net\":174.2,\"available\":{\"adhoc_margin\":0,\"cash\":664.13,\"collateral\":0,\"intraday_payin\":0,\"live_balance\":2563.4,\"opening_balance\":2767.25},\"utilised\":{\"debits\":-980.99,\"exposure\":0,\"m2m_realised\":0,\"m2m_unrealised\":0,\"option_premium\":0,\"payout\":0,\"span\":0,\"holding_sales\":735.86,\"turnover\":0,\"liquid_collateral\":0,\"stock_collateral\":0,\"delivery\":0}},\"commodity\":{\"enabled\":false,\"net\":0,\"available\":{\"adhoc_margin\":0,\"cash\":0,\"collateral\":0,\"intraday_payin\":0,\"live_balance\":0,\"opening_balance\":0},\"utilised\":{\"debits\":0,\"exposure\":0,\"m2m_realised\":0,\"m2m_unrealised\":0,\"option_premium\":0,\"payout\":0,\"span\":0,\"holding_sales\":0,\"turnover\":0,\"liquid_collateral\":0,\"stock_collateral\":0,\"delivery\":0}}}"
+    }
+  ],
+  "structuredContent": {
+    "equity": {
+      "enabled": true,
+      "net": 174.2,
+      "available": {
+        "adhoc_margin": 0,
+        "cash": 664.13,
+        "collateral": 0,
+        "intraday_payin": 0,
+        "live_balance": 2563.4,
+        "opening_balance": 2767.25
+      },
+      "utilised": {
+        "debits": -980.99,
+        "exposure": 0,
+        "m2m_realised": 0,
+        "m2m_unrealised": 0,
+        "option_premium": 0,
+        "payout": 0,
+        "span": 0,
+        "holding_sales": 735.86,
+        "turnover": 0,
+        "liquid_collateral": 0,
+        "stock_collateral": 0,
+        "delivery": 0
+      }
+    },
+    "commodity": {
+      "enabled": false,
+      "net": 0,
+      "available": {
+        "adhoc_margin": 0,
+        "cash": 0,
+        "collateral": 0,
+        "intraday_payin": 0,
+        "live_balance": 0,
+        "opening_balance": 0
+      },
+      "utilised": {
+        "debits": 0,
+        "exposure": 0,
+        "m2m_realised": 0,
+        "m2m_unrealised": 0,
+        "option_premium": 0,
+        "payout": 0,
+        "span": 0,
+        "holding_sales": 0,
+        "turnover": 0,
+        "liquid_collateral": 0,
+        "stock_collateral": 0,
+        "delivery": 0
+      }
+    }
+  }
+}

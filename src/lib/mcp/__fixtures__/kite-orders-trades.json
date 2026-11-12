@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\":[{\"average_price\":1901.24,\"quantity\":117,\"trade_id\":\"188842807\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866},{\"average_price\":1869.15,\"quantity\":150,\"trade_id\":\"099282400\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866},{\"average_price\":2186.4,\"quantity\":183,\"trade_id\":\"594336407\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866},{\"average_price\":2884.7,\"quantity\":28,\"trade_id\":\"165764420\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866},{\"average_price\":2811.21,\"quantity\":36,\"trade_id\":\"298509551\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866},{\"average_price\":2959.36,\"quantity\":27,\"trade_id\":\"647683140\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866},{\"average_price\":2575.74,\"quantity\":80,\"trade_id\":\"750054909\",\"product\":\"CNC\",\"fill_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_timestamp\":\"2026-11-12T13:51:59+05:30\",\"exchange_order_id\":\"9813602572505567\",\"order_id\":\"882849182040192\",\"transaction_type\":\"SELL\",\"tradingsymbol\":\"CCCC\",\"exchange\":\"NSE\",\"instrument_token\":3675866}]}"
+    }
+  ],
+  "structuredContent": {
+    "data": [
+      {
+        "average_price": 1901.24,
+        "quantity": 117,
+        "trade_id": "188842807",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      },
+      {
+        "average_price": 1869.15,
+        "quantity": 150,
+        "trade_id": "099282400",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      },
+      {
+        "average_price": 2186.4,
+        "quantity": 183,
+        "trade_id": "594336407",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      },
+      {
+        "average_price": 2884.7,
+        "quantity": 28,
+        "trade_id": "165764420",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      },
+      {
+        "average_price": 2811.21,
+        "quantity": 36,
+        "trade_id": "298509551",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      },
+      {
+        "average_price": 2959.36,
+        "quantity": 27,
+        "trade_id": "647683140",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      },
+      {
+        "average_price": 2575.74,
+        "quantity": 80,
+        "trade_id": "750054909",
+        "product": "CNC",
+        "fill_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_timestamp": "2026-11-12T13:51:59+05:30",
+        "exchange_order_id": "9813602572505567",
+        "order_id": "882849182040192",
+        "transaction_type": "SELL",
+        "tradingsymbol": "CCCC",
+        "exchange": "NSE",
+        "instrument_token": 3675866
+      }
+    ]
+  }
+}

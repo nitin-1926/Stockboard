@@ -1,0 +1,44 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    },
+    "trade.kite/app": {
+      "arguments": {
+        "instruments": [
+          "NSE:AAAA",
+          "NSE:BBBB"
+        ],
+        "mode": "ltp"
+      },
+      "tool": "market"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\":{\"NSE:BBBB\":{\"instrument_token\":55967,\"last_price\":2078.3},\"NSE:AAAA\":{\"instrument_token\":5102297,\"last_price\":2024.15}},\"meta\":{\"as_of_available\":false,\"missing_instruments\":[],\"partial\":false,\"requested_count\":2,\"returned_count\":2,\"timestamp_note\":\"Upstream does not provide an as-of timestamp; use mode=quote for timestamp and last_trade_time\"}}"
+    }
+  ],
+  "structuredContent": {
+    "data": {
+      "NSE:BBBB": {
+        "instrument_token": 55967,
+        "last_price": 2078.3
+      },
+      "NSE:AAAA": {
+        "instrument_token": 5102297,
+        "last_price": 2024.15
+      }
+    },
+    "meta": {
+      "as_of_available": false,
+      "missing_instruments": [],
+      "partial": false,
+      "requested_count": 2,
+      "returned_count": 2,
+      "timestamp_note": "Upstream does not provide an as-of timestamp; use mode=quote for timestamp and last_trade_time"
+    }
+  }
+}
