@@ -1,0 +1,21 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    },
+    "trade.kite/app": {
+      "arguments": {
+        "mode": "ltp"
+      },
+      "tool": "market"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "parameter 'instruments': must be an array of 1-500 non-empty strings"
+    }
+  ],
+  "isError": true
+}

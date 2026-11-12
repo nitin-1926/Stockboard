@@ -1,0 +1,50 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    },
+    "trade.kite/app": {
+      "arguments": {
+        "mode": "profile"
+      },
+      "tool": "portfolio"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"user_id\":\"SCZ481\",\"user_name\":\"Test User\",\"user_shortname\":\"Test\",\"avatar_url\":\"\",\"user_type\":\"individual/res_no_nn\",\"email\":\"user@example.com\",\"broker\":\"ZERODHA\",\"meta\":{\"demat_consent\":\"consent\"},\"products\":[\"CNC\",\"NRML\",\"MIS\",\"BO\",\"CO\"],\"order_types\":[\"MARKET\",\"LIMIT\",\"SL\",\"SL-M\"],\"exchanges\":[\"MF\",\"NSE\",\"BSE\"]}"
+    }
+  ],
+  "structuredContent": {
+    "user_id": "SCZ481",
+    "user_name": "Test User",
+    "user_shortname": "Test",
+    "avatar_url": "",
+    "user_type": "individual/res_no_nn",
+    "email": "user@example.com",
+    "broker": "ZERODHA",
+    "meta": {
+      "demat_consent": "consent"
+    },
+    "products": [
+      "CNC",
+      "NRML",
+      "MIS",
+      "BO",
+      "CO"
+    ],
+    "order_types": [
+      "MARKET",
+      "LIMIT",
+      "SL",
+      "SL-M"
+    ],
+    "exchanges": [
+      "MF",
+      "NSE",
+      "BSE"
+    ]
+  }
+}
