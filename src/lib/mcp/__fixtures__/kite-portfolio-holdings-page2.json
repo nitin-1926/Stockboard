@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    },
+    "trade.kite/app": {
+      "arguments": {
+        "from": 2,
+        "limit": 2,
+        "mode": "holdings",
+        "type": "full"
+      },
+      "tool": "portfolio"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\":[{\"tradingsymbol\":\"FFFF\",\"exchange\":\"NSE\",\"instrument_token\":8053173,\"isin\":\"EBI678I69948\",\"product\":\"CNC\",\"price\":0,\"used_quantity\":0,\"quantity\":95,\"t1_quantity\":0,\"realised_quantity\":95,\"authorised_quantity\":95,\"authorised_date\":\"2026-11-12T17:00:00+05:30\",\"opening_quantity\":95,\"collateral_quantity\":0,\"collateral_type\":\"\",\"discrepancy\":false,\"average_price\":2589.86,\"last_price\":2597.43,\"close_price\":2379.57,\"pnl\":-2654.41,\"day_change\":-52.14,\"day_change_percentage\":-1.67,\"mtf\":{\"quantity\":0,\"used_quantity\":0,\"average_price\":0,\"value\":0,\"initial_margin\":0}},{\"tradingsymbol\":\"GGGG\",\"exchange\":\"NSE\",\"instrument_token\":9728444,\"isin\":\"KOW067H36781\",\"product\":\"CNC\",\"price\":0,\"used_quantity\":0,\"quantity\":167,\"t1_quantity\":0,\"realised_quantity\":167,\"authorised_quantity\":167,\"authorised_date\":\"2026-11-12T17:00:00+05:30\",\"opening_quantity\":167,\"collateral_quantity\":0,\"collateral_type\":\"\",\"discrepancy\":false,\"average_price\":2036.28,\"last_price\":292.28,\"close_price\":1105.91,\"pnl\":-956.42,\"day_change\":2752.19,\"day_change_percentage\":4.64,\"mtf\":{\"quantity\":0,\"used_quantity\":0,\"average_price\":0,\"value\":0,\"initial_margin\":0}}],\"pagination\":{\"from\":2,\"limit\":2,\"total\":32,\"has_more\":true,\"returned\":2}}"
+    }
+  ],
+  "structuredContent": {
+    "data": [
+      {
+        "tradingsymbol": "FFFF",
+        "exchange": "NSE",
+        "instrument_token": 8053173,
+        "isin": "EBI678I69948",
+        "product": "CNC",
+        "price": 0,
+        "used_quantity": 0,
+        "quantity": 95,
+        "t1_quantity": 0,
+        "realised_quantity": 95,
+        "authorised_quantity": 95,
+        "authorised_date": "2026-11-12T17:00:00+05:30",
+        "opening_quantity": 95,
+        "collateral_quantity": 0,
+        "collateral_type": "",
+        "discrepancy": false,
+        "average_price": 2589.86,
+        "last_price": 2597.43,
+        "close_price": 2379.57,
+        "pnl": -2654.41,
+        "day_change": -52.14,
+        "day_change_percentage": -1.67,
+        "mtf": {
+          "quantity": 0,
+          "used_quantity": 0,
+          "average_price": 0,
+          "value": 0,
+          "initial_margin": 0
+        }
+      },
+      {
+        "tradingsymbol": "GGGG",
+        "exchange": "NSE",
+        "instrument_token": 9728444,
+        "isin": "KOW067H36781",
+        "product": "CNC",
+        "price": 0,
+        "used_quantity": 0,
+        "quantity": 167,
+        "t1_quantity": 0,
+        "realised_quantity": 167,
+        "authorised_quantity": 167,
+        "authorised_date": "2026-11-12T17:00:00+05:30",
+        "opening_quantity": 167,
+        "collateral_quantity": 0,
+        "collateral_type": "",
+        "discrepancy": false,
+        "average_price": 2036.28,
+        "last_price": 292.28,
+        "close_price": 1105.91,
+        "pnl": -956.42,
+        "day_change": 2752.19,
+        "day_change_percentage": 4.64,
+        "mtf": {
+          "quantity": 0,
+          "used_quantity": 0,
+          "average_price": 0,
+          "value": 0,
+          "initial_margin": 0
+        }
+      }
+    ],
+    "pagination": {
+      "from": 2,
+      "limit": 2,
+      "total": 32,
+      "has_more": true,
+      "returned": 2
+    }
+  }
+}

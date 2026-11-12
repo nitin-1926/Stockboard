@@ -1,0 +1,96 @@
+{
+  "_meta": {
+    "io.modelcontextprotocol/serverInfo": {
+      "name": "Kite MCP Server",
+      "version": "v0.4.0-dev36"
+    },
+    "trade.kite/app": {
+      "arguments": {
+        "from": 0,
+        "limit": 2,
+        "mode": "holdings",
+        "type": "full"
+      },
+      "tool": "portfolio"
+    }
+  },
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"data\":[{\"tradingsymbol\":\"BBBB\",\"exchange\":\"NSE\",\"instrument_token\":55967,\"isin\":\"KIB203K59333\",\"product\":\"CNC\",\"price\":0,\"used_quantity\":0,\"quantity\":181,\"t1_quantity\":0,\"realised_quantity\":181,\"authorised_quantity\":181,\"authorised_date\":\"2026-11-12T17:00:00+05:30\",\"opening_quantity\":181,\"collateral_quantity\":0,\"collateral_type\":\"\",\"discrepancy\":false,\"average_price\":604.63,\"last_price\":905.89,\"close_price\":849.87,\"pnl\":758.85,\"day_change\":2544.69,\"day_change_percentage\":0.92,\"mtf\":{\"quantity\":0,\"used_quantity\":0,\"average_price\":0,\"value\":0,\"initial_margin\":0}},{\"tradingsymbol\":\"EEEE\",\"exchange\":\"BSE\",\"instrument_token\":292386359,\"isin\":\"EVW261C75081\",\"product\":\"CNC\",\"price\":0,\"used_quantity\":196,\"quantity\":47,\"t1_quantity\":0,\"realised_quantity\":47,\"authorised_quantity\":243,\"authorised_date\":\"2026-11-12T17:00:00+05:30\",\"opening_quantity\":243,\"collateral_quantity\":0,\"collateral_type\":\"\",\"discrepancy\":false,\"average_price\":1814.36,\"last_price\":1035.88,\"close_price\":1088.13,\"pnl\":0,\"day_change\":1368.57,\"day_change_percentage\":0.64,\"mtf\":{\"quantity\":0,\"used_quantity\":0,\"average_price\":0,\"value\":0,\"initial_margin\":0}}],\"pagination\":{\"from\":0,\"limit\":2,\"total\":32,\"has_more\":true,\"returned\":2}}"
+    }
+  ],
+  "structuredContent": {
+    "data": [
+      {
+        "tradingsymbol": "BBBB",
+        "exchange": "NSE",
+        "instrument_token": 55967,
+        "isin": "KIB203K59333",
+        "product": "CNC",
+        "price": 0,
+        "used_quantity": 0,
+        "quantity": 181,
+        "t1_quantity": 0,
+        "realised_quantity": 181,
+        "authorised_quantity": 181,
+        "authorised_date": "2026-11-12T17:00:00+05:30",
+        "opening_quantity": 181,
+        "collateral_quantity": 0,
+        "collateral_type": "",
+        "discrepancy": false,
+        "average_price": 604.63,
+        "last_price": 905.89,
+        "close_price": 849.87,
+        "pnl": 758.85,
+        "day_change": 2544.69,
+        "day_change_percentage": 0.92,
+        "mtf": {
+          "quantity": 0,
+          "used_quantity": 0,
+          "average_price": 0,
+          "value": 0,
+          "initial_margin": 0
+        }
+      },
+      {
+        "tradingsymbol": "EEEE",
+        "exchange": "BSE",
+        "instrument_token": 292386359,
+        "isin": "EVW261C75081",
+        "product": "CNC",
+        "price": 0,
+        "used_quantity": 196,
+        "quantity": 47,
+        "t1_quantity": 0,
+        "realised_quantity": 47,
+        "authorised_quantity": 243,
+        "authorised_date": "2026-11-12T17:00:00+05:30",
+        "opening_quantity": 243,
+        "collateral_quantity": 0,
+        "collateral_type": "",
+        "discrepancy": false,
+        "average_price": 1814.36,
+        "last_price": 1035.88,
+        "close_price": 1088.13,
+        "pnl": 0,
+        "day_change": 1368.57,
+        "day_change_percentage": 0.64,
+        "mtf": {
+          "quantity": 0,
+          "used_quantity": 0,
+          "average_price": 0,
+          "value": 0,
+          "initial_margin": 0
+        }
+      }
+    ],
+    "pagination": {
+      "from": 0,
+      "limit": 2,
+      "total": 32,
+      "has_more": true,
+      "returned": 2
+    }
+  }
+}
