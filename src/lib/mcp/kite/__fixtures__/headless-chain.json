@@ -1,0 +1,179 @@
+{
+  "note": "Observed 2026-11-12 (U1). Hosts/paths/status/cookie names and query param NAMES only; no values.",
+  "steps": {
+    "B.consent": "pass",
+    "A.zerodhaLogin": "pass",
+    "B.mcpChainAndTools": "pass",
+    "C.kiteConnect": "FAIL connect-redirect failed: HTTP 200 stuck at kite.zerodha.com/connect/authorize?api_key&sess_id title=Login to Kite by Zerodha - Fast, easy trading and investment platform"
+  },
+  "hops": [
+    {
+      "step": "mcp.authorize.get",
+      "method": "GET",
+      "url": "mcp.kite.trade/authorize?response_type&client_id&redirect_uri&code_challenge&code_challenge_method&state&resource",
+      "status": 200,
+      "setCookies": [
+        "__Host-kite-consent-<flow>",
+        "__cf_bm",
+        "_cfuvid"
+      ],
+      "ms": 54
+    },
+    {
+      "step": "mcp.authorize.post",
+      "method": "POST",
+      "url": "mcp.kite.trade/authorize",
+      "status": 303,
+      "setCookies": [
+        "__Host-kite-consent-<flow>",
+        "__Host-kite-state-<flow>"
+      ],
+      "location": "kite.zerodha.com/connect/login?api_key&v&redirect_params",
+      "ms": 113
+    },
+    {
+      "step": "zerodha.api.login",
+      "method": "POST",
+      "url": "kite.zerodha.com/api/login",
+      "status": 200,
+      "setCookies": [
+        "kf_session",
+        "__cf_bm"
+      ],
+      "ms": 278
+    },
+    {
+      "step": "zerodha.api.twofa",
+      "method": "POST",
+      "url": "kite.zerodha.com/api/twofa",
+      "status": 200,
+      "setCookies": [
+        "user_id",
+        "public_token",
+        "enctoken",
+        "_cfuvid"
+      ],
+      "ms": 51
+    },
+    {
+      "step": "mcp.kite.redirects",
+      "method": "GET",
+      "url": "kite.zerodha.com/connect/login?api_key&v&redirect_params",
+      "status": 302,
+      "setCookies": [],
+      "location": "kite.zerodha.com/connect/finish?api_key&sess_id",
+      "ms": 76
+    },
+    {
+      "step": "mcp.kite.redirects",
+      "method": "GET",
+      "url": "kite.zerodha.com/connect/finish?api_key&sess_id",
+      "status": 302,
+      "setCookies": [],
+      "location": "mcp.kite.trade/callback?action&type&status&request_token&session_id&state",
+      "ms": 41
+    },
+    {
+      "step": "mcp.kite.redirects",
+      "method": "GET",
+      "url": "mcp.kite.trade/callback?action&type&status&request_token&session_id&state",
+      "status": 302,
+      "setCookies": [
+        "__Host-kite-state-<flow>"
+      ],
+      "location": "127.0.0.1:53682/callback?code&state",
+      "ms": 145
+    },
+    {
+      "step": "mcp.token",
+      "method": "POST",
+      "url": "mcp.kite.trade/token",
+      "status": 200,
+      "setCookies": [],
+      "ms": 88
+    },
+    {
+      "step": "connect.redirects",
+      "method": "GET",
+      "url": "kite.zerodha.com/connect/login?v&api_key",
+      "status": 302,
+      "setCookies": [],
+      "location": "kite.zerodha.com/connect/finish?api_key&sess_id",
+      "ms": 126
+    },
+    {
+      "step": "connect.redirects",
+      "method": "GET",
+      "url": "kite.zerodha.com/connect/finish?api_key&sess_id",
+      "status": 302,
+      "setCookies": [],
+      "location": "kite.zerodha.com/connect/authorize?api_key&sess_id",
+      "ms": 64
+    },
+    {
+      "step": "connect.redirects",
+      "method": "GET",
+      "url": "kite.zerodha.com/connect/authorize?api_key&sess_id",
+      "status": 200,
+      "setCookies": [],
+      "ms": 42
+    }
+  ],
+  "dcr": {
+    "reused": true
+  },
+  "mcpCallback": {
+    "stateMatches": true,
+    "hasCode": true,
+    "params": [
+      "code",
+      "state"
+    ]
+  },
+  "tokenResponse": {
+    "keys": [
+      "access_token",
+      "expires_in",
+      "scope",
+      "token_type"
+    ],
+    "token_type": "Bearer",
+    "scope": "default",
+    "expires_in": 604799,
+    "claimNames": [
+      "client_id",
+      "iss",
+      "sub",
+      "aud",
+      "exp",
+      "iat",
+      "jti",
+      "kite_user_id",
+      "session_id",
+      "scope"
+    ]
+  },
+  "zerodhaLoginShape": {
+    "status": "string",
+    "data": {
+      "user_id": "string",
+      "request_id": "string",
+      "twofa_type": "string",
+      "twofa_types": [
+        "string"
+      ],
+      "twofa_status": "string",
+      "profile": {
+        "user_name": "string",
+        "user_shortname": "string",
+        "avatar_url": null
+      }
+    }
+  },
+  "zerodhaTwofaShape": {
+    "status": "string",
+    "data": {
+      "profile": {}
+    }
+  }
+}
