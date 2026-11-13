@@ -89,7 +89,8 @@ beforeEach(() => {
   for (const m of [after, spark, chart, getConnection, getLtp]) m.mockReset();
   withKite.mockClear();
   spark.mockImplementation(async (syms: string[]) => quotes(syms));
-  getConnection.mockResolvedValue({ status: "connected", tokenExpiresAt: new Date(OPEN.getTime() + 3_600_000) });
+  // kiteLtp checks expiry against the real clock, so the token must outlive "now", not OPEN.
+  getConnection.mockResolvedValue({ status: "connected", tokenExpiresAt: new Date(Date.now() + 3_600_000) });
 });
 
 describe("ensureFresh", () => {
