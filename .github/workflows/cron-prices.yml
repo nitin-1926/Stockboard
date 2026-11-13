@@ -1,10 +1,13 @@
 name: Cron prices-intraday
 
 on:
-  # UTC. Wide enough for IST and both NY offsets (EST 14:30-21:00, EDT 13:30-20:00);
-  # the job skips whichever market isMarketOpen() says is closed.
+  # UTC. NSE every 5 min 09:15-15:30 IST (03:45-10:00 UTC); NYSE every 15 min, wide enough
+  # for both NY offsets. The job skips whichever market isMarketOpen() says is closed.
+  # Mirrors SCHEDULES in src/lib/jobs/schedule.ts.
   schedule:
-    - cron: "*/15 3-10 * * 1-5"
+    - cron: "45-55/5 3 * * 1-5"
+    - cron: "*/5 4-9 * * 1-5"
+    - cron: "0 10 * * 1-5"
     - cron: "*/15 13-21 * * 1-5"
   workflow_dispatch:
 

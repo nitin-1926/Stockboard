@@ -48,10 +48,18 @@ describe("isStale", () => {
     expect(isStale("backfill", null, at("2026-11-11T13:00:00Z"))).toBe(false);
   });
 
-  it("kite-sync self-heal run is within grace", () => {
-    const now = at("2026-11-11T12:00:00Z");
-    expect(isStale("kite-sync", at("2026-11-10T10:20:00Z"), now)).toBe(false);
+  it("kite-sync runs hourly through the NSE session", () => {
+    // 09:05 UTC success covers the 09:00 slot until 10:00 + 90 min grace.
+    expect(isStale("kite-sync", at("2026-11-11T09:05:00Z"), at("2026-11-11T10:20:00Z"))).toBe(false);
+    // Last success 06:05 UTC: the 08:00 slot is past its grace at 09:40 → stale.
+    expect(isStale("kite-sync", at("2026-11-11T06:05:00Z"), at("2026-11-11T09:40:00Z"))).toBe(true);
+    // The 11:30 self-heal run covers the 10:15 slot.
     expect(isStale("kite-sync", at("2026-11-11T11:35:00Z"), at("2026-11-11T13:00:00Z"))).toBe(false);
-    expect(isStale("kite-sync", at("2026-11-10T10:20:00Z"), at("2026-11-11T12:46:00Z"))).toBe(true);
+  });
+
+  it("prices-intraday has 5-minute NSE slots from 09:15 to 15:30 IST", () => {
+    // 60 min grace: a 04:47 success covers the 04:45 slot until 05:45, the 04:55 slot makes it stale.
+    expect(isStale("prices-intraday", at("2026-11-11T04:47:00Z"), at("2026-11-11T05:45:00Z"))).toBe(false);
+    expect(isStale("prices-intraday", at("2026-11-11T04:47:00Z"), at("2026-11-11T05:55:00Z"))).toBe(true);
   });
 });

@@ -2,19 +2,23 @@ import type { JobName } from "./registry";
 
 type Schedule = { slots: string[]; graceMin: number }; // slots: "HH:MM" UTC, Mon–Fri
 
-const every15 = (fromHour: number, toHour: number) =>
-  Array.from({ length: (toHour - fromHour + 1) * 4 }, (_, i) => {
-    const h = fromHour + Math.floor(i / 4);
-    return `${String(h).padStart(2, "0")}:${String((i % 4) * 15).padStart(2, "0")}`;
-  });
+/** "HH:MM" UTC slots every `step` minutes from `from` to `to` inclusive (both "HH:MM"). */
+const every = (step: number, from: string, to: string) => {
+  const mins = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3));
+  const out: string[] = [];
+  for (let m = mins(from); m <= mins(to); m += step)
+    out.push(`${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`);
+  return out;
+};
 
 /** Mirrors .github/workflows/cron-*.yml. Keep the two in sync. */
 export const SCHEDULES: Record<JobName, Schedule | null> = {
   "kite-login": { slots: ["02:30"], graceMin: 90 },
-  // 11:30 is a self-heal retry, so it is covered by the grace rather than being its own slot.
-  "kite-sync": { slots: ["10:15"], graceMin: 150 },
+  // Hourly 09:30-15:30 IST, then 15:45 IST after close. 11:30 is a self-heal retry, covered by grace.
+  "kite-sync": { slots: [...every(60, "04:00", "10:00"), "10:15"], graceMin: 90 },
   "indmoney-sync": { slots: ["21:15"], graceMin: 90 },
-  "prices-intraday": { slots: [...every15(3, 10), ...every15(13, 21)], graceMin: 60 },
+  // NSE every 5 min 09:15-15:30 IST; NYSE every 15 min across both DST offsets.
+  "prices-intraday": { slots: [...every(5, "03:45", "10:00"), ...every(15, "13:00", "21:45")], graceMin: 60 },
   "eod-in": { slots: ["11:00"], graceMin: 90 },
   "eod-us": { slots: ["21:30"], graceMin: 90 },
   backfill: null, // manual only
