@@ -2,7 +2,7 @@
 // getHoldingsView() resolves the actor itself (DAL rule), loads snapshots + ledger +
 // prices + FX, and hands them to the pure buildHoldingsView(), which does the math and
 // the hide-amounts redaction. Pages render the DTO; they never touch the DB.
-import { and, desc, eq, gte, inArray, sql } from "drizzle-orm";
+import { and, desc, eq, gte, inArray, notLike, sql } from "drizzle-orm";
 import { db } from "@/db";
 import { fxDaily, holdingSnapshots, instruments, priceLatest, pricesDaily, syncRuns } from "@/db/schema";
 import { type Actor, requireActor } from "@/lib/auth/access";
@@ -330,7 +330,11 @@ export async function latestSnapshotRunIds(): Promise<string[]> {
   const rows = await db
     .selectDistinctOn([holdingSnapshots.broker], { broker: holdingSnapshots.broker, runId: holdingSnapshots.runId })
     .from(holdingSnapshots)
-    .innerJoin(syncRuns, and(eq(syncRuns.id, holdingSnapshots.runId), eq(syncRuns.status, "completed")))
+    // Test runs (job "test-…") share the prod database; they must never become the visible portfolio.
+    .innerJoin(
+      syncRuns,
+      and(eq(syncRuns.id, holdingSnapshots.runId), eq(syncRuns.status, "completed"), notLike(syncRuns.job, "test-%")),
+    )
     .orderBy(holdingSnapshots.broker, desc(holdingSnapshots.takenAt));
   return rows.map((r) => r.runId);
 }

@@ -45,7 +45,7 @@ describe.skipIf(!process.env.DATABASE_URL)("prices-intraday job (Neon, mocked Ya
     await pool.end();
   });
 
-  it("tracked set = held (ledger or latest snapshot) ∪ watched ∪ pending targets ∪ benchmarks", async () => {
+  it("tracked set = held (ledger) ∪ watched ∪ pending targets ∪ benchmarks; test snapshot runs never count", async () => {
     set = {
       held: await mk("HELD"),
       snap: await mk("SNAP"),
@@ -70,8 +70,9 @@ describe.skipIf(!process.env.DATABASE_URL)("prices-intraday job (Neon, mocked Ya
     await db.insert(targets).values({ instrumentId: set.target.id, kind: "target", price: "20", setBy: "owner@example.com", priceAtSet: "10" });
 
     const ids = new Set((await trackedInstruments("IN")).map((i) => i.id));
-    for (const k of ["held", "snap", "watch", "target", "bench"]) expect(ids.has(set[k].id), k).toBe(true);
-    for (const k of ["archived", "none", "sold"]) expect(ids.has(set[k].id), k).toBe(false);
+    for (const k of ["held", "watch", "target", "bench"]) expect(ids.has(set[k].id), k).toBe(true);
+    // "snap" sits only in this test's snapshot run (job "test-…"), which latestSnapshotRunIds ignores.
+    for (const k of ["snap", "archived", "none", "sold"]) expect(ids.has(set[k].id), k).toBe(false);
     expect((await trackedInstruments("US")).some((i) => i.id === set.bench.id)).toBe(false);
   });
 
@@ -85,8 +86,8 @@ describe.skipIf(!process.env.DATABASE_URL)("prices-intraday job (Neon, mocked Ya
     const only = Object.values(set).map((i) => i.id);
     // Wed 10:30 IST (NSE open), 00:00 in New York (closed).
     const r = await pricesIntraday(new Date("2026-11-11T05:00:00Z"), { only });
-    expect(r.counts).toMatchObject({ skipped: "US closed", IN_yahoo: 5, IN_fallback: 0 });
+    expect(r.counts).toMatchObject({ skipped: "US closed", IN_yahoo: 4, IN_fallback: 0 });
     const priced = new Set((await db.select().from(priceLatest).where(inArray(priceLatest.instrumentId, only))).map((p) => p.instrumentId));
-    expect(priced).toEqual(new Set([set.held.id, set.snap.id, set.watch.id, set.target.id, set.bench.id]));
+    expect(priced).toEqual(new Set([set.held.id, set.watch.id, set.target.id, set.bench.id]));
   });
 });
