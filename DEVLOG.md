@@ -68,6 +68,33 @@ New entries go at the **top** of the Log section (reverse chronological).
 
 ## Log
 
+### 2026-11-13 — Tests no longer leak fake holdings into the live dashboard
+
+- Type: fix
+- Scope: `src/lib/views/holdings.ts` (`latestSnapshotRunIds`), `vitest.config.ts`, `package.json` (`test:db`), `src/lib/jobs/prices-intraday.test.ts`, `src/lib/market/live.test.ts`
+- Correction from owner: "why do I see test data instead of real data".
+
+Reasoning / RCA / research:
+    - Local and prod share one database (owner's choice). The Neon integration tests write rows with `test-…` job names and clean up afterwards, but while a kite-sync test runs its completed fixture snapshot is the newest one, and `latestSnapshotRunIds` picked it, so the live site showed TEST_ holdings. Running the suite during development made this visible.
+    - Fix 1 (root): the visible portfolio ignores sync runs whose job starts with `test-`, so a test can never become the latest snapshot.
+    - Fix 2 (blast radius): DB tests are opt-in. `pnpm test` (and CI) no longer load .env.local, so they skip; `pnpm test:db` runs them deliberately. Other test rows (watch items, events) still appear for seconds during a `test:db` run.
+    - Rejected: a separate test database (owner wants one DB), per-test schemas (heavy for a personal app).
+    - Also fixed a time bomb in live.test: the mocked Kite token expiry was pinned to a fixed date but compared with the real clock.
+
+### 2026-11-13 — Kite sync hourly, NSE prices every 5 min; old Flask dir removed
+
+- Type: chore
+- Scope: `.github/workflows/cron-{prices,kite-sync}.yml`, `src/lib/jobs/schedule.ts` + test, `docs/plans/...rewrite-plan.md`
+- Owner request: Kite sync every hour and prices every 5 minutes during 09:15-15:30 IST; keep one database for local and prod.
+
+Reasoning / RCA / research:
+    - Load is small: one Yahoo spark batch per 5 minutes (about 35 symbols) and about 6 Kite MCP calls per hourly sync, far under either provider's limits. GitHub Actions minutes are free for a public repo.
+    - GitHub's scheduler can delay or drop runs at busy times, so 5 minutes is a target, not a guarantee. Page loads still refresh stale prices on their own (ADR 0010), so a dropped run costs nothing visible.
+    - `SCHEDULES` mirrors the workflow crons so connection banners judge staleness correctly. kite-sync grace dropped from 150 to 90 minutes to match the hourly cadence; the 17:00 IST run stays as a self-heal.
+    - NYSE prices stay every 15 minutes (owner asked only about the NSE window).
+    - Local and prod deliberately share one Neon database (owner decision: easier to check, validate and fix against real data). Consequence: local and prod ENCRYPTION_KEYs differ, so Kite credentials saved in one can't be read by the other.
+    - The old Flask directory was deleted and this project moved to `Projects/Stockboard`. The plan doc's references to the upstream fork were scrubbed.
+
 ### 2026-11-13 — UI redesign: graphite + saffron, top nav, decluttered pages
 
 - Type: refactor (UI)
